@@ -21,8 +21,8 @@ function inputNew(ch) {
     evalString += ch;
   // Otherwise, it means we put in a new operation...
   } else {
-    // If the eval string isn't blank,
-    if (evalString !== ' ') {
+    // If the eval string isn't blank or the last character isn't an operation,
+    if (evalString !== ' ' && !isNaN(evalString.slice(-1), 10)) {
       // Add the operation to the evalString.
       evalString += ch;
     }
@@ -35,12 +35,15 @@ function inputNew(ch) {
 
 // Calculate the result.
 function calculate() {
-  // Evaluate the evalString and set it as the evalString.
-  evalString = '' + eval(evalString);
-  // Update the calculator window.
-  document.getElementById('shown').innerHTML = evalString;
-  // Indicate that we're done with our current calculation.
-  done = true;
+  // If the last character of the evalString isn't an operation,
+  if (evalString !== ' ' && !isNaN(evalString.slice(-1), 10)) {
+    // Evaluate the evalString and set it as the evalString.
+    evalString = '' + eval(evalString);
+    // Update the calculator window.
+    document.getElementById('shown').innerHTML = evalString;
+    // Indicate that we're done with our current calculation.
+    done = true;
+  }
 }
 
 // Add listeners for window and buttons.
