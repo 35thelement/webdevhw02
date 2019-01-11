@@ -19,11 +19,11 @@ function inputNew(ch) {
     }
     // Add the digit to the evalString.
     evalString += ch;
-  // Otherwise, it means we put in a new operation...
+  // Otherwise, it means we put in a new operation or a decimal...
   } else {
-    // If the eval string isn't blank or the last character isn't an operation,
+    // If the eval string isn't blank and the last character is a number,
     if (evalString !== ' ' && !isNaN(evalString.slice(-1), 10)) {
-      // Add the operation to the evalString.
+      // Add the operation/decimal to the evalString.
       evalString += ch;
     }
     // Indicate that we're not done with the current calculation.
