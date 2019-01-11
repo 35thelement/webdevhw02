@@ -1,0 +1,14 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	root /home/ben/www/hw02;
+
+	index index.html index.htm;
+
+	server_name hw02.element35.org;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
