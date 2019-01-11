@@ -10,17 +10,25 @@ function clear() {
 
 // Input a new digit or operation.
 function inputNew(ch) {
-  // If we just finished a calculation and we put in a new number,
-  if (done && !isNaN(parseInt(ch, 10))) {
-    // Clear the evalString.
-    clear();
-    // Otherwise, it means we put in a new operation, and therefore...
+  // If we put in a new number,
+  if (!isNaN(parseInt(ch, 10))) {
+    // If we just finished a calculation,
+    if(done) {
+      // Clear the evalString.
+      clear();
+    }
+    // Add the digit to the evalString.
+    evalString += ch;
+  // Otherwise, it means we put in a new operation...
   } else {
-    // ...we're not done, so we need to change the done variable.
+    // If the eval string isn't blank,
+    if (evalString !== ' ') {
+      // Add the operation to the evalString.
+      evalString += ch;
+    }
+    // Indicate that we're not done with the current calculation.
     done = false;
   }
-  // Add the digit/operation to the evalString.
-  evalString += ch;
   // Update the calculator window.
   document.getElementById('shown').innerHTML = evalString;
 }
