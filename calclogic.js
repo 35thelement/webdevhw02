@@ -1,7 +1,7 @@
 // Clear the calculator window.
 function clear() {
   // Reset the evalString.
-  evalString = ' ';
+  evalString = '0';
   // Update the calculator window.
   document.getElementById('shown').innerHTML = evalString;
   // Indicate that we're not done with our new calculation.
