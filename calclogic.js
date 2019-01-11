@@ -1,6 +1,3 @@
-// The string of numbers and operators that will be evaluated.
-evalString = ' ';
-
 // Clear the calculator window.
 function clear() {
   // Reset the evalString.
