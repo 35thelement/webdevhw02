@@ -1,0 +1,50 @@
+Please fill in answers to the questions below:
+
+
+1. What's your name?
+
+Ben Romine.
+
+
+2. What hostname did you deploy to?
+
+I deployed to element35.org.
+
+3. What's the link to your repository on github with your code?
+
+https://github.com/35thelement/webdevhw02
+
+4. How many HTML / CSS tutorial exercises did you do?
+
+I did 39 HTML / CSS tutorial exercises.
+
+5. How comfortable do you feel with HTML and CSS now?
+
+I feel very comfortable with HTML and CSS. On a scale of 1 to 10, I'd give myself an 8.
+
+6. How many JS tutorial exercises did you do?
+
+I did 12 JS tutorial exercises.
+
+7. How comfortable do you feel with JS now?
+
+I feel very comfortable with JS. On a scale of 1 to 10, I'd give myself a 7.
+
+8. Do all of your HTML pages pass the W3C HTML validator?
+(https://validator.w3.org/)
+
+Yes.
+
+9. Which parts of this assignment did you have trouble with, if any?
+
+I had some trouble initially with figuring out how the calculation logic of the calculator would work, but once I discovered the eval() method, it became easier.
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Task 1
+ - Task 2
+ - Task 3
+ - Task 4
+ - Task 5
+ - Task 6
+ - Task 7
+ - Task 8
