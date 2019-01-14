@@ -14,12 +14,22 @@
     if (!isNaN(parseInt(ch, 10))) {
       // Add the digit to the evalString.
       evalString += ch;
-    // Otherwise, it means we put in a new operation or a decimal...
+      // Otherwise, it means we put in a new operation or a decimal...
     } else {
       // If the eval string isn't blank and the last character is a number,
       if (evalString !== ' ' && !isNaN(evalString.slice(-1), 10)) {
-        // Add the operation/decimal to the evalString.
-        evalString += ch;
+        //If the new character is a decimal,
+        if (ch === '.') {
+          // If we don't have a decimal already,
+          if (!evalString.includes('.')) {
+            // Add the decimal to the evalString.
+            evalString += ch;
+          }
+          // Otherwise, it's an operation...
+        } else {
+          // Add the operation to the evalString.
+          evalString += ch;
+        }
       }
     }
     // Update the calculator window.
