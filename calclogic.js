@@ -6,19 +6,12 @@
     evalString = ' ';
     // Update the calculator window.
     document.getElementById('shown').innerHTML = evalString;
-    // Indicate that we're not done with our new calculation.
-    done = false;
   }
 
   // Input a new digit or operation.
   function inputNew(ch) {
     // If we put in a new number,
     if (!isNaN(parseInt(ch, 10))) {
-      // If we just finished a calculation,
-      if(done) {
-        // Clear the evalString.
-        clear();
-      }
       // Add the digit to the evalString.
       evalString += ch;
     // Otherwise, it means we put in a new operation or a decimal...
@@ -28,8 +21,6 @@
         // Add the operation/decimal to the evalString.
         evalString += ch;
       }
-      // Indicate that we're not done with the current calculation.
-      done = false;
     }
     // Update the calculator window.
     document.getElementById('shown').innerHTML = evalString;
@@ -44,7 +35,7 @@
       // Update the calculator window.
       document.getElementById('shown').innerHTML = evalString;
       // Indicate that we're done with our current calculation.
-      done = true;
+      evalString = ' ';
     }
   }
 
