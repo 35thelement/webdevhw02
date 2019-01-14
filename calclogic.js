@@ -34,7 +34,7 @@
       evalString = '' + eval(evalString);
       // Update the calculator window.
       document.getElementById('shown').innerHTML = evalString;
-      // Indicate that we're done with our current calculation.
+      // Reset the evalString.
       evalString = ' ';
     }
   }
