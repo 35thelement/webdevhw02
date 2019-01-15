@@ -8,16 +8,34 @@
     document.getElementById('shown').innerHTML = evalString;
   }
 
-  // Determine the number of operations in a string.
-  function numOps(str) {
-    // Return the number of '+'...
-    return (str.match(/\+/g) || []).length +
-    // plus the number of '-'...
-    (str.match(/\-/g) || []).length +
-    // plus the number of '*'...
-    (str.match(/\*/g) || []).length +
-    // plus the number of '/'.
-    (str.match(/\//g) || []).length;
+  // Determine the index of the latest operation in the evalString.
+  function lastOp() {
+    // The index of the last + in the string.
+    lastPlus = evalString.lastIndexOf('+');
+    // The index of the last - in the string.
+    lastMinus = evalString.lastIndexOf('-');
+    // The index of the last * in the string.
+    lastMult = evalString.lastIndexOf('*');
+    // The index of the last / in the string.
+    lastDiv = evalString.lastIndexOf('/');
+
+    // If latest operation was a +,
+    if (lastPlus > lastMinus && lastPlus > lastMult && lastPlus > lastDiv) {
+      // Return that index.
+      return lastPlus;
+      // Otherwise, if the latest operation was a -,
+    } else if (lastMinus > lastMult && lastMinus > lastDiv) {
+      // Return that index.
+      return lastMinus;
+      // Otherwise, if the latest operation was a *,
+    } else if (lastMult > lastDiv) {
+      // Return that index.
+      return lastMult;
+      // Otherwise,
+    } else {
+      // Return the index of the latest /, as that's the only other operation.
+      return lastDiv;
+    }
   }
 
   // Input a new digit or operation.
@@ -32,8 +50,8 @@
       if (evalString !== ' ' && !isNaN(evalString.slice(-1), 10)) {
         //If the new character is a decimal,
         if (ch === '.') {
-          // If we have a number of decimals less than or equal to the totalnumber of operations,
-          if ((evalString.match(/\./g) || []).length <= numOps(evalString)) {
+          // If the number past the latest operation does not contain a decimal,
+          if (!evalString.slice(lastOp()).includes('.')) {
             // Add the decimal to the evalString.
             evalString += ch;
           }
