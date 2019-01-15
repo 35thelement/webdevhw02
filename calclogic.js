@@ -8,6 +8,18 @@
     document.getElementById('shown').innerHTML = evalString;
   }
 
+  // Determine the number of operations in a string.
+  function numOps(str) {
+    // Return the number of '+'...
+    return (str.match(/\+/g) || []).length +
+    // plus the number of '-'...
+    (str.match(/\-/g) || []).length +
+    // plus the number of '*'...
+    (str.match(/\*/g) || []).length +
+    // plus the number of '/'.
+    (str.match(/\//g) || []).length;
+  }
+
   // Input a new digit or operation.
   function inputNew(ch) {
     // If we put in a new number,
@@ -20,8 +32,8 @@
       if (evalString !== ' ' && !isNaN(evalString.slice(-1), 10)) {
         //If the new character is a decimal,
         if (ch === '.') {
-          // If we don't have a decimal already,
-          if (!evalString.includes('.')) {
+          // If we have a number of decimals less than or equal to the totalnumber of operations,
+          if ((evalString.match(/\./g) || []).length <= numOps(evalString)) {
             // Add the decimal to the evalString.
             evalString += ch;
           }
