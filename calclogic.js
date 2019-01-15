@@ -61,9 +61,11 @@
     }
   }
 
-  // Add listeners for window and buttons.
+  // When the DOM content is loaded...
   document.addEventListener("DOMContentLoaded", function(event) {
+    // Clear the calculator.
     clear();
+    // Add listeners for all the buttons on the calculator.
     document.getElementById('1').addEventListener('click', function(){ inputNew(1); });
     document.getElementById('2').addEventListener('click', function(){ inputNew(2); });
     document.getElementById('3').addEventListener('click', function(){ inputNew(3); });
