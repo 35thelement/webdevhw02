@@ -55,11 +55,13 @@
         }
         // If the evalString isn't blank,
       } else {
-        // If the character is a decimal
-        // and the last number in the string doesn't have a decimal in it,
-        if (ch === '.' && !evalString.slice(lastOp()).includes('.')) {
-          // Add the decimal to the evalString.
-          addChar(ch);
+        // If the character is a decimal,
+        if (ch === '.') {
+          // If the last number in the string doesn't have a decimal in it,
+          if (!evalString.slice(lastOp()).includes('.')) {
+            // Add the decimal to the evalString.
+            addChar(ch);
+          }
           // Otherwise, the character is an operation...
         } else {
           // If the last character in the evalString is an operation
