@@ -52,6 +52,8 @@
         if (ch === '-' || ch === '.') {
           // Add the character to the eval string.
           evalString += ch;
+          // Update the calculator window.
+          document.getElementById('shown').innerHTML = evalString;
         }
         // If the evalString isn't blank,
       } else {
@@ -60,6 +62,8 @@
         if (ch === '.' && !evalString.slice(lastOp()).includes('.')) {
           // Add the decimal to the evalString.
           evalString += ch;
+          // Update the calculator window.
+          document.getElementById('shown').innerHTML = evalString;
           // Otherwise, the character is an operation...
         } else {
           // If the last character in the evalString is an operation
@@ -70,6 +74,8 @@
             if (ch === '-') {
               // Add the - to the evalString.
               evalString += ch;
+              // Update the calculator window.
+              document.getElementById('shown').innerHTML = evalString;
             }
             // Otherwise, the last character is not an operation.
           } else {
@@ -77,6 +83,8 @@
             if (!isNaN(evalString)) {
               // Add the operation to the evalString.
               evalString += ch;
+              // Update the calculator window.
+              document.getElementById('shown').innerHTML = evalString;
               // Otherwise, if the character is a +,
             } else if (ch === '+') {
               // Then the user hit the '+/=' key and is trying to calculate.
@@ -86,8 +94,6 @@
         }
       }
     }
-    // Update the calculator window.
-    document.getElementById('shown').innerHTML = evalString;
   }
 
   // Calculate the result.
