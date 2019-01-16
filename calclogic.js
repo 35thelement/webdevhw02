@@ -46,19 +46,41 @@
       evalString += ch;
       // Otherwise, it means we put in a new operation or a decimal...
     } else {
-      // If the eval string isn't blank and the last character is a number,
-      if (evalString !== ' ' && !isNaN(evalString.slice(-1), 10)) {
-        //If the new character is a decimal,
-        if (ch === '.') {
-          // If the number past the latest operation does not contain a decimal,
-          if (!evalString.slice(lastOp()).includes('.')) {
-            // Add the decimal to the evalString.
-            evalString += ch;
-          }
-          // Otherwise, it's an operation...
-        } else {
-          // Add the operation to the evalString.
+      // If the evalString is blank,
+      if (evalString === ' ' ) {
+        //If the new character is a decimal or a -,
+        if (ch === '-' || ch === '.') {
+          // Add the character to the eval string.
           evalString += ch;
+        }
+        // If the evalString isn't blank,
+      } else {
+        // If the character is a decimal
+        // and the last number in the string doesn't have a decimal in it,
+        if (ch === '.' && !evalString.slice(lastOp()).includes('.')) {
+          // Add the decimal to the evalString.
+          evalString += ch;
+          // Otherwise, the character is an operation...
+        } else {
+          // If the last character in the evalString is an operation,
+          if (evalString.length - 1 === lastOp()) {
+            // If the character is a -,
+            if (ch === '-') {
+              // Add the - to the evalString.
+              evalString += ch;
+            }
+            // Otherwise, the last character is not an operation.
+          } else {
+            // If the evalString is still a single number,
+            if (eval(evalString) == evalString) {
+              // Add the operation to the evalString.
+              evalString += ch;
+              // Otherwise, if the character is a +,
+            } else if (ch === '+') {
+              // Then the user hit the '+/=' key and is trying to calculate.
+              calculate();
+            }
+          }
         }
       }
     }
@@ -99,7 +121,6 @@
     document.getElementById('-').addEventListener('click', function(){ inputNew('-'); });
     document.getElementById('*').addEventListener('click', function(){ inputNew('*'); });
     document.getElementById('/').addEventListener('click', function(){ inputNew('/'); });
-    document.getElementById('=').addEventListener('click', function(){ calculate(); });
     document.getElementById('clear').addEventListener('click', function(){ clear(); });
   });
   // Immediately call function.
