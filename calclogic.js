@@ -62,8 +62,10 @@
           evalString += ch;
           // Otherwise, the character is an operation...
         } else {
-          // If the last character in the evalString is an operation,
-          if (evalString.length - 1 === lastOp()) {
+          // If the last character in the evalString is an operation
+          // and the last character in the string is not a -,
+          if (evalString.length - 1 === lastOp() &&
+          evalString.slice(-1) !== '-') {
             // If the character is a -,
             if (ch === '-') {
               // Add the - to the evalString.
@@ -71,8 +73,8 @@
             }
             // Otherwise, the last character is not an operation.
           } else {
-            // If the evalString is still a single number,
-            if (eval(evalString) == evalString) {
+            // If the evalString is still a number,
+            if (!isNaN(evalString)) {
               // Add the operation to the evalString.
               evalString += ch;
               // Otherwise, if the character is a +,
