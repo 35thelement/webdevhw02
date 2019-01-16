@@ -44,6 +44,8 @@
     if (!isNaN(parseInt(ch, 10))) {
       // Add the digit to the evalString.
       evalString += ch;
+      // Update the calculator window.
+      document.getElementById('shown').innerHTML = evalString;
       // Otherwise, it means we put in a new operation or a decimal...
     } else {
       // If the evalString is blank,
