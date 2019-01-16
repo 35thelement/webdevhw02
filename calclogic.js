@@ -43,9 +43,7 @@
     // If we put in a new number,
     if (!isNaN(parseInt(ch, 10))) {
       // Add the digit to the evalString.
-      evalString += ch;
-      // Update the calculator window.
-      document.getElementById('shown').innerHTML = evalString;
+      addChar(ch);
       // Otherwise, it means we put in a new operation or a decimal...
     } else {
       // If the evalString is blank,
@@ -53,9 +51,7 @@
         //If the new character is a decimal or a -,
         if (ch === '-' || ch === '.') {
           // Add the character to the eval string.
-          evalString += ch;
-          // Update the calculator window.
-          document.getElementById('shown').innerHTML = evalString;
+          addChar(ch);
         }
         // If the evalString isn't blank,
       } else {
@@ -63,9 +59,7 @@
         // and the last number in the string doesn't have a decimal in it,
         if (ch === '.' && !evalString.slice(lastOp()).includes('.')) {
           // Add the decimal to the evalString.
-          evalString += ch;
-          // Update the calculator window.
-          document.getElementById('shown').innerHTML = evalString;
+          addChar(ch);
           // Otherwise, the character is an operation...
         } else {
           // If the last character in the evalString is an operation
@@ -75,18 +69,14 @@
             // If the character is a -,
             if (ch === '-') {
               // Add the - to the evalString.
-              evalString += ch;
-              // Update the calculator window.
-              document.getElementById('shown').innerHTML = evalString;
+              addChar(ch);
             }
             // Otherwise, the last character is not an operation.
           } else {
             // If the evalString is still a number,
             if (!isNaN(evalString)) {
               // Add the operation to the evalString.
-              evalString += ch;
-              // Update the calculator window.
-              document.getElementById('shown').innerHTML = evalString;
+              addChar(ch);
               // Otherwise, if the character is a +,
             } else if (ch === '+') {
               // Then the user hit the '+/=' key and is trying to calculate.
@@ -96,6 +86,14 @@
         }
       }
     }
+  }
+
+  // Add a character to the evalString and update the calculator window.
+  function addChar(ch) {
+    // Add the character to the evalString.
+    evalString += ch;
+    // Update the calculator window.
+    document.getElementById('shown').innerHTML = evalString;
   }
 
   // Calculate the result.
